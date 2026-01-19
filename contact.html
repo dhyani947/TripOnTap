@@ -29,15 +29,15 @@
                 <p>
                     Your name:
                 </p>
-                <input class="input_fields" type="text" placeholder="Enter your name">
+                <input class="input_fields js-name" type="text" placeholder="Enter your name">
                 <p>
                     Email address:
                 </p>
-                <input class="input_fields" type="email" placeholder="you@example.com">
+                <input class="input_fields js-email" type="email" placeholder="you@example.com">
                 <p>
                     Preferred destination:
                 </p>
-                <select class="costum_select">
+                <select class="costum_select js-select">
                     <option value="" selected disabled>Select...</option>
                     <option value="goa">Goa, India</option>
                     <option value="manali">Manali & Kasol, India</option>
@@ -49,26 +49,28 @@
                 <p>
                     Approx. travel date:
                 </p>
-                <input class="input_fields" type="date" placeholder="dd/mm/yyyy">
+                <input class="input_fields js-date" type="date" placeholder="dd/mm/yyyy">
                 <p>
                     Number of travellers:
                 </p>
-                <input class="input_fields" type="text" placeholder="e.g. 2, 4, 6...">
+                <input class="input_fields js-travellers" type="text" placeholder="e.g. 2, 4, 6...">
                 <p>
-                    Age: <input class="input_fields" type="number" placeholder="Enter your age">
+                    Age: <input class="input_fields js-age" type="number" placeholder="Enter your age">
                 </p>
                 <p>
-                    Phone number: <input class="input_fields" type="tel" maxlength="10" minlength="10" pattern="[0-9]{10}" placeholder="Enter phone number">
+                    Phone number: <input class="input_fields js-phone" type="tel" maxlength="10" pattern="[0-9]{10}" placeholder="Enter phone number">
                 </p>
                 <p>
                     Full Address:
                 </p>
-                <textarea class="input_fields" placeholder="Enter your address"></textarea>
+                <textarea class="input_fields js-address" placeholder="Enter your address"></textarea>
                 <p>
                     Anything specific you want?
                 </p>
-                <textarea class="input_fields" placeholder="Tell us about your budget, interests, etc."></textarea>
-                <button class="submit_contact">
+                <textarea class="input_fields js-comments" placeholder="Tell us about your budget, interests, etc."></textarea>
+                <button class="submit_contact" onclick="
+                addForm();
+                ">
                     Submit Request
                 </button>
             </div>
@@ -83,3 +85,6 @@
                 </ul>
             </div>
         </div>
+    </body>
+    <script src="script/trip-on-tap.js"></script>
+</html>
