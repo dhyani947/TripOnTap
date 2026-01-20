@@ -10,11 +10,11 @@
 				<div class="title">
 				TripOnTap
 				</div>
-				<button class="nav_btn">Home</button>
-				<button class="nav_btn">Destination</button>
-				<button class="nav_btn">Packages</button>
-				<button class="nav_btn">About</button>
-				<button class="nav_btn">PlanYourTrip</button>
+				<button class="nav_btn"><a href="index.html">Home</a></button>
+				<button class="nav_btn"><a href="destinations.html">Destination</a></button>
+				<button class="nav_btn"><a href="packages.html">Packages</a></button>
+				<button class="nav_btn"><a href="about.html">About</a></button>
+				<button class="nav_btn"><a href="contact.html">PlanYourTrip</a></button>
 			</div>
 		</nav>
         <section class="package_boxes">
@@ -98,7 +98,7 @@
                 </button>
             </div>
         </section>
-        <div class="package_itinerary_modal js-kedarnath-modal">
+        <form class="package_itinerary_modal js-kedarnath-modal">
             <h2>Kedarnath - Itinerary</h2>
             <img src="images/kedarnath.jpg" alt="Kedarnath Image" class="package_itinerary_image">
             <ul>
@@ -129,13 +129,11 @@
             <p>
                 Any request or notes? <textarea class="input_fields js-comments-pkg" placeholder="Tell us about your budget, interests, etc."></textarea>
             </p>
-            <button class="submit_contact" onclick="
-            addPackageForm();
-            ">
+            <button class="submit_contact" type="submit">
                 Submit Request
             </button>
-        </div>
-        <div class="package_itinerary_modal js-ooty-modal">
+        </form>
+        <form class="package_itinerary_modal js-ooty-modal">
             <h2>Ooty - Itinerary</h2>
             <img src="images/ooty.jpg" alt="Ooty Image" class="package_itinerary_image">
             <ul>
@@ -166,13 +164,11 @@
             <p>
                 Any request or notes? <textarea class="input_fields js-comments-pkg" placeholder="Tell us about your budget, interests, etc."></textarea>
             </p>
-            <button class="submit_contact" onclick="
-            addPackageForm();
-            ">
+            <button class="submit_contact" type="submit">
                 Submit Request
             </button>
-        </div>
-        <div class="package_itinerary_modal js-madhya-pradesh-modal">
+        </form>
+        <form class="package_itinerary_modal js-madhya-pradesh-modal">
             <h2>Madhya Pradesh - Itinerary</h2>
             <img src="images/madhya_pradesh.jpg" alt="Madhya Pradesh Image" class="package_itinerary_image">
             <ul>
@@ -203,13 +199,11 @@
             <p>
                 Any request or notes? <textarea class="input_fields js-comments-pkg" placeholder="Tell us about your budget, interests, etc."></textarea>
             </p>
-            <button class="submit_contact" onclick="
-            addPackageForm();
-            ">
+            <button class="submit_contact" type="submit">
                 Submit Request
             </button>
-        </div>
-        <div class="package_itinerary_modal js-bali-modal">
+        </form>
+        <form class="package_itinerary_modal js-bali-modal">
             <h2>Bali - Itinerary</h2>
             <img src="images/bali.jpg" alt="Bali Image" class="package_itinerary_image">
             <ul>
@@ -240,13 +234,11 @@
             <p>
                 Any request or notes? <textarea class="input_fields js-comments-pkg" placeholder="Tell us about your budget, interests, etc."></textarea>
             </p>
-            <button class="submit_contact" onclick="
-            addPackageForm();
-            ">
+            <button class="submit_contact" type="submit">
                 Submit Request
             </button>
-        </div>
-        <div class="package_itinerary_modal js-dubai-modal">
+        </form>
+        <form class="package_itinerary_modal js-dubai-modal">
             <h2>Dubai - Itinerary</h2>
             <img src="images/dubai.jpg" alt="Dubai Image" class="package_itinerary_image">
             <ul>
@@ -277,12 +269,10 @@
             <p>
                 Any request or notes? <textarea class="input_fields js-comments-pkg" placeholder="Tell us about your budget, interests, etc."></textarea>
             </p>
-            <button class="submit_contact" onclick="
-            addPackageForm();
-            ">
+            <button class="submit_contact" type="submit">
                 Submit Request
             </button>
-        </div>
+        </form>
+        <script src="script/trip-on-tap.js"></script>
     </body>
-    <script src="script/trip-on-tap.js"></script>
 </html>
