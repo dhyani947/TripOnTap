@@ -28,6 +28,11 @@ nav{
     text-align: center;
     flex: 1;
 }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
 .nav_btn{
     background-color: transparent;
     color: white;
