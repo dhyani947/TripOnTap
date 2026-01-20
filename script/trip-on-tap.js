@@ -10,6 +10,8 @@ const modalHTML = `
 
 document.body.insertAdjacentHTML("beforeend", modalHTML);
 
+
+
 function showModal(message) {
     document.getElementById("modalMessage").innerText = message;
     document.getElementById("modal").style.display = "flex";
@@ -32,7 +34,7 @@ function isValidPhone(phone) {
 
 function checkFields(fields, i, j) {
     let firstInvalidField = null;
-
+    
     fields.forEach(field => {
         if (!field.value && !firstInvalidField) {
             firstInvalidField = field;
@@ -44,19 +46,19 @@ function checkFields(fields, i, j) {
         firstInvalidField.focus();
         return false;
     }
-
+    
     if (!isValidEmail(fields[i].value)) {
         showModal("Please enter a valid email address");
         fields[i].focus();
         return false;
     }
-
+    
     if (!isValidPhone(fields[j].value)) {
         showModal("Please enter a valid phone number (10 digits)");
         fields[j].focus();
         return false;
     }
-
+    
     return true;
 }
 
@@ -72,9 +74,9 @@ function addForm() {
         document.querySelector('.js-address'),
         document.querySelector('.js-comments')
     ];
-
+    
     if (!checkFields(fields, 1, 6)) return;
-
+    
     const form = {
         name: fields[0].value,
         email: fields[1].value,
@@ -86,12 +88,22 @@ function addForm() {
         address: fields[7].value,
         comments: fields[8].value
     };
-
+    
     forms.push(form);
     console.log(form);
     showModal("Form submitted successfully! Our team will contact you soon.");
     fields.forEach(field => field.value = "");
 }
+
+const contactForm = document.getElementById("contactForm");
+
+if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        addForm();
+    });
+}
+
 
 function closeAllPackageModals() {
     const modals = document.querySelectorAll('.package_itinerary_modal');
@@ -120,15 +132,15 @@ function openDubaiModal() {
     document.querySelector('.js-dubai-modal').style.display = 'block';
 }
 
-function addPackageForm() {
+function addPackageForm(formElement) {
     const fields = [
-        document.querySelector('.js-name-pkg'),
-        document.querySelector('.js-age-pkg'),
-        document.querySelector('.js-email-pkg'),
-        document.querySelector('.js-phone-pkg'),
-        document.querySelector('.js-address-pkg'),
-        document.querySelector('.js-travellers-pkg'),
-        document.querySelector('.js-comments-pkg')
+        formElement.querySelector('.js-name-pkg'),
+        formElement.querySelector('.js-age-pkg'),
+        formElement.querySelector('.js-email-pkg'),
+        formElement.querySelector('.js-phone-pkg'),
+        formElement.querySelector('.js-address-pkg'),
+        formElement.querySelector('.js-travellers-pkg'),
+        formElement.querySelector('.js-comments-pkg')
     ];
 
     if (!checkFields(fields, 2, 3)) return;
@@ -146,4 +158,12 @@ function addPackageForm() {
     console.log(form);
     showModal("Package inquiry submitted successfully! Our team will contact you soon.");
     fields.forEach(field => field.value = "");
+    formElement.style.display = 'none';
 }
+
+document.querySelectorAll('.package_itinerary_modal').forEach(form => {
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        addPackageForm(this);
+    });
+});
