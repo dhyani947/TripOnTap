@@ -10,11 +10,12 @@
 				<div class="title">
 				TripOnTap
 				</div>
-				<button class="nav_btn"><a href="index.html">Home</a></button>
-				<button class="nav_btn"><a href="destinations.html">Destination</a></button>
-				<button class="nav_btn"><a href="packages.html">Packages</a></button>
-				<button class="nav_btn"><a href="about.html">About</a></button>
-				<button class="nav_btn"><a href="contact.html">PlanYourTrip</a></button>
+				<a class="nav_btn" href="index.html">Home</a>
+				<a class="nav_btn" href="destinations.html">Destination</a>
+				<a class="nav_btn active" href="packages.html">Packages</a>
+				<a class="nav_btn" href="about.html">About</a>
+				<a class="nav_btn" href="contact.html">PlanYourTrip</a>
+                <a class="nav_btn" href="your-trips.html">YourTrips</a>
 			</div>
 		</nav>
         <section class="package_boxes">
@@ -99,7 +100,7 @@
             </div>
         </section>
         <form class="package_itinerary_modal js-kedarnath-modal">
-            <h2>Kedarnath - Itinerary</h2>
+            <h2 class="package_title">Kedarnath - Itinerary</h2>
             <img src="images/kedarnath.jpg" alt="Kedarnath Image" class="package_itinerary_image">
             <ul>
                 <li>Day 1: Arrival at Dehradun, transfer to Guptkashi</li>
@@ -118,7 +119,7 @@
                 Email address: <input class="input_fields js-email-pkg" type="email" placeholder="you@example.com">
             </p>
             <p>
-                Phone number: <input class="input_fields js-phone-pkg" type="tel" maxlength="10" pattern="[0-9]{10}" placeholder="Enter phone number">
+                Phone number: <input class="input_fields js-phone-pkg" type="tel" maxlength="10" placeholder="Enter phone number">
             </p>
             <p>
                 Home Address: <textarea class="input_fields js-address-pkg" placeholder="Enter your address"></textarea>
@@ -129,12 +130,18 @@
             <p>
                 Any request or notes? <textarea class="input_fields js-comments-pkg" placeholder="Tell us about your budget, interests, etc."></textarea>
             </p>
+            <select class="costum_select js-select-pkg">
+                <option value="" selected disabled>Select Available Date...</option>
+                <option value="10oct-14oct">10 Oct - 14 Oct</option>
+                <option value="20oct-24oct">20 Oct - 24 Oct</option>
+                <option value="5nov-9nov">5 Nov - 9 Nov</option>
+            </select>
             <button class="submit_contact" type="submit">
                 Submit Request
             </button>
         </form>
         <form class="package_itinerary_modal js-ooty-modal">
-            <h2>Ooty - Itinerary</h2>
+            <h2 class="package_title">Ooty - Itinerary</h2>
             <img src="images/ooty.jpg" alt="Ooty Image" class="package_itinerary_image">
             <ul>
                 <li>Day 1: Arrival at Ooty, check-in at hotel</li>
@@ -153,7 +160,7 @@
                 Email address: <input class="input_fields js-email-pkg" type="email" placeholder="you@example.com">
             </p>
             <p>
-                Phone number: <input class="input_fields js-phone-pkg" type="tel" maxlength="10" pattern="[0-9]{10}" placeholder="Enter phone number">
+                Phone number: <input class="input_fields js-phone-pkg" type="tel" maxlength="10" placeholder="Enter phone number">
             </p>
             <p>
                 Home Address: <textarea class="input_fields js-address-pkg" placeholder="Enter your address"></textarea>
@@ -164,12 +171,17 @@
             <p>
                 Any request or notes? <textarea class="input_fields js-comments-pkg" placeholder="Tell us about your budget, interests, etc."></textarea>
             </p>
+            <select class="costum_select js-select-pkg">
+                <option value="" selected disabled>Select Available Date...</option>
+                <option value="15oct-18oct">15 Oct - 18 Oct</option>
+                <option value="25oct-28oct">25 Oct - 28 Oct</option>
+            </select>
             <button class="submit_contact" type="submit">
                 Submit Request
             </button>
         </form>
         <form class="package_itinerary_modal js-madhya-pradesh-modal">
-            <h2>Madhya Pradesh - Itinerary</h2>
+            <h2 class="package_title">Madhya Pradesh - Itinerary</h2>
             <img src="images/madhya_pradesh.jpg" alt="Madhya Pradesh Image" class="package_itinerary_image">
             <ul>
                 <li>Day 1: Arrival at Bhopal, visit local attractions</li>
@@ -188,7 +200,7 @@
                 Email address: <input class="input_fields js-email-pkg" type="email" placeholder="you@example.com">
             </p>
             <p>
-                Phone number: <input class="input_fields js-phone-pkg" type="tel" maxlength="10" pattern="[0-9]{10}" placeholder="Enter phone number">
+                Phone number: <input class="input_fields js-phone-pkg" type="tel" maxlength="10" placeholder="Enter phone number">
             </p>
             <p>
                 Home Address: <textarea class="input_fields js-address-pkg" placeholder="Enter your address"></textarea>
@@ -199,12 +211,17 @@
             <p>
                 Any request or notes? <textarea class="input_fields js-comments-pkg" placeholder="Tell us about your budget, interests, etc."></textarea>
             </p>
+            <select class="costum_select js-select-pkg">
+                <option value="" selected disabled>Select Available Date...</option>
+                <option value="20oct-24oct">20 Oct - 24 Oct</option>
+                <option value="1nov-5nov">1 Nov - 5 Nov</option>
+            </select>
             <button class="submit_contact" type="submit">
                 Submit Request
             </button>
         </form>
         <form class="package_itinerary_modal js-bali-modal">
-            <h2>Bali - Itinerary</h2>
+            <h2 class="package_title">Bali - Itinerary</h2>
             <img src="images/bali.jpg" alt="Bali Image" class="package_itinerary_image">
             <ul>
                 <li>Day 1: Arrival at Denpasar, transfer to hotel</li>
@@ -223,7 +240,7 @@
                 Email address: <input class="input_fields js-email-pkg" type="email" placeholder="you@example.com">
             </p>
             <p>
-                Phone number: <input class="input_fields js-phone-pkg" type="tel" maxlength="10" pattern="[0-9]{10}" placeholder="Enter phone number">
+                Phone number: <input class="input_fields js-phone-pkg" type="tel" maxlength="10" placeholder="Enter phone number">
             </p>
             <p>
                 Home Address: <textarea class="input_fields js-address-pkg" placeholder="Enter your address"></textarea>
@@ -234,12 +251,17 @@
             <p>
                 Any request or notes? <textarea class="input_fields js-comments-pkg" placeholder="Tell us about your budget, interests, etc."></textarea>
             </p>
+            <select class="costum_select js-select-pkg">
+                <option value="" selected disabled>Select Available Date...</option>
+                <option value="1nov-5nov">1 Nov - 5 Nov</option>
+                <option value="10nov-14nov">10 Nov - 14 Nov</option>
+            </select>
             <button class="submit_contact" type="submit">
                 Submit Request
             </button>
         </form>
         <form class="package_itinerary_modal js-dubai-modal">
-            <h2>Dubai - Itinerary</h2>
+            <h2 class="package_title">Dubai - Itinerary</h2>
             <img src="images/dubai.jpg" alt="Dubai Image" class="package_itinerary_image">
             <ul>
                 <li>Day 1: Arrival at Dubai, check-in at hotel</li>
@@ -258,7 +280,7 @@
                 Email address: <input class="input_fields js-email-pkg" type="email" placeholder="you@example.com">
             </p>
             <p>
-                Phone number: <input class="input_fields js-phone-pkg" type="tel" maxlength="10" pattern="[0-9]{10}" placeholder="Enter phone number">
+                Phone number: <input class="input_fields js-phone-pkg" type="tel" maxlength="10" placeholder="Enter phone number">
             </p>
             <p>
                 Home Address: <textarea class="input_fields js-address-pkg" placeholder="Enter your address"></textarea>
@@ -269,6 +291,11 @@
             <p>
                 Any request or notes? <textarea class="input_fields js-comments-pkg" placeholder="Tell us about your budget, interests, etc."></textarea>
             </p>
+            <select class="costum_select js-select-pkg">
+                <option value="" selected disabled>Select Available Date...</option>
+                <option value="10nov-14nov">10 Nov - 14 Nov</option>
+                <option value="20nov-24nov">20 Nov - 24 Nov</option>
+            </select>
             <button class="submit_contact" type="submit">
                 Submit Request
             </button>

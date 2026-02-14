@@ -10,124 +10,139 @@
 				<div class="title">
 				TripOnTap
 				</div>
-				<button class="nav_btn"><a href="index.html">Home</a></button>
-				<button class="nav_btn"><a href="destinations.html">Destination</a></button>
-				<button class="nav_btn"><a href="packages.html">Packages</a></button>
-				<button class="nav_btn"><a href="about.html">About</a></button>
-				<button class="nav_btn"><a href="contact.html">PlanYourTrip</a></button>
+				<a class="nav_btn" href="index.html">Home</a>
+				<a class="nav_btn active" href="destinations.html">Destination</a>
+				<a class="nav_btn" href="packages.html">Packages</a>
+				<a class="nav_btn" href="about.html">About</a>
+				<a class="nav_btn" href="contact.html">PlanYourTrip</a>
+                <a class="nav_btn" href="your-trips.html">YourTrips</a>
 			</div>
 		</nav>
+        <div class="destination_bg">
         <header>
             <h2>Explore Destinations</h2>
         </header>
         <p>
             Discover beach holidays, mountain adventures, city breaks and international trips.
         </p>
-        <input class="search_bar" type="text" placeholder="Search Destinations">
-        <section class="destination_boxes">
+        <input class="search_bar" type="text" placeholder="Search Destinations" id="searchDestinations" onkeyup="search()">
+        <section class="destination_boxes" id="destinationBoxes">
             <div class="destination_box">
-                <div class="dest_img">
-                    <img src="images/goa.jpg" alt="Goa Image">
-                </div>
-                <div class="img_des">
-                    Beach
-                </div>
-                <p>
-                    <b>Goa, India</b>
-                </p>
-                <p>
-                    Perfect for parties, relaxing beaches, Portuguese heritage and vibrant nightlife.
-                </p>
-                <p>
-                    Best time: Nov - Feb
-                </p>
+                <a href="goa.html">
+                    <div class="dest_img">
+                        <img src="images/goa.jpg" alt="Goa Image">
+                    </div>
+                    <div class="img_des">
+                        Beach
+                    </div>
+                    <h3>
+                        Goa, India
+                    </h3>
+                    <p>
+                        Perfect for parties, relaxing beaches, Portuguese heritage and vibrant nightlife.
+                    </p>
+                    <p>
+                        Best time: Nov - Feb
+                    </p>
+                </a>
             </div>
             <div class="destination_box">
-                <div class="dest_img">
-                    <img src="images/manali.jpg" alt="Manali Image">
-                </div>
-                <div class="img_des">
-                    Mountains
-                </div>
-                <p>
-                    <b>Manali & Kasol</b>
-                </p>
-                <p>
-                    Snowy mountains, river-side cafes, trekking routes and calm village life.
-                </p>
-                <p>
-                    Best time: Oct - Mar
-                </p>
+                <a href="manali.html">
+                    <div class="dest_img">
+                        <img src="images/manali.jpg" alt="Manali Image">
+                    </div>
+                    <div class="img_des">
+                        Mountains
+                    </div>
+                    <h3>
+                        Manali & Kasol, India
+                    </h3>
+                    <p>
+                        Snowy mountains, river-side cafes, trekking routes and calm village life.
+                    </p>
+                    <p>
+                        Best time: Oct - Mar
+                    </p>
+                </a>
             </div>
             <div class="destination_box">
-                <div class="dest_img">
-                    <img src="images/kerala.jpg" alt="Kerala Image">
-                </div>
-                <div class="img_des">
-                    Nature
-                </div>
-                <p>
-                    <b>Kerala</b>
-                </p>
-                <p>
-                    Lush green hills, houseboat stays, ayurveda therapy and peaceful landscapes.
-                </p>
-                <p>
-                    Best time: Sep - Mar
-                </p>
+                <a href="kerala.html">
+                    <div class="dest_img">
+                        <img src="images/kerala.jpg" alt="Kerala Image">
+                    </div>
+                    <div class="img_des">
+                        Nature
+                    </div>
+                    <h3>
+                        Kerala, India
+                    </h3>
+                    <p>
+                        Lush green hills, houseboat stays, ayurveda therapy and peaceful landscapes.
+                    </p>
+                    <p>
+                        Best time: Sep - Mar
+                    </p>
+                </a>
             </div>
             <div class="destination_box">
-                <div class="dest_img">
-                    <img src="images/dubai.jpg" alt="Dubai Image">
-                </div>
-                <div class="img_des">
-                    City
-                </div>
-                <p>
-                    <b>Dubai</b>
-                </p>
-                <p>
-                    Luxuary shopping, modern skyline, desert safari and world-class attractions.
-                </p>
-                <p>
-                    Best time: Nov - Mar
-                </p>
+                <a href="dubai.html">
+                    <div class="dest_img">
+                        <img src="images/dubai.jpg" alt="Dubai Image">
+                    </div>
+                    <div class="img_des">
+                        City
+                    </div>
+                    <h3>
+                        Dubai, UAE
+                    </h3>
+                    <p>
+                        Luxuary shopping, modern skyline, desert safari and world-class attractions.
+                    </p>
+                    <p>
+                        Best time: Nov - Mar
+                    </p>
+                </a>
             </div>
             <div class="destination_box">
-                <div class="dest_img">
-                    <img src="images/bali.jpg" alt="Bali Image">
-                </div>
-                <div class="img_des">
-                    International
-                </div>
-                <p>
-                    <b>Bali, Indonesia</b>
-                </p>
-                <p>
-                    Tropical beaches, rice terraces, temples and budget-friendly cafes.
-                </p>
-                <p>
-                    Best time: Apr - Oct
-                </p>
+                <a href="bali.html">
+                    <div class="dest_img">
+                        <img src="images/bali.jpg" alt="Bali Image">
+                    </div>
+                    <div class="img_des">
+                        International
+                    </div>
+                    <h3>
+                        Bali, Indonesia
+                    </h3>
+                    <p>
+                        Tropical beaches, rice terraces, temples and budget-friendly cafes.
+                    </p>
+                    <p>
+                        Best time: Apr - Oct
+                    </p>
+                </a>
             </div>
             <div class="destination_box">
-                <div class="dest_img">
-                    <img src="images/switzerland.jpg" alt="Switzerland Image">
-                </div>
-                <div class="img_des">
-                    Adventure
-                </div>
-                <p>
-                    <b>Switzerland</b>
-                </p>
-                <p>
-                    Snow-covered Alps, scenic train rides and picturesque European villages.
-                </p>
-                <p>
-                    Best time: Jun - Sep
-                </p>
+                <a href="switzerland.html">
+                    <div class="dest_img">
+                        <img src="images/switzerland.jpg" alt="Switzerland Image">
+                    </div>
+                    <div class="img_des">
+                        Adventure
+                    </div>
+                    <h3>
+                        Switzerland, Europe
+                    </h3>
+                    <p>
+                        Snow-covered Alps, scenic train rides and picturesque European villages.
+                    </p>
+                    <p>
+                        Best time: Jun - Sep
+                    </p>
+                </a>
             </div>
         </section>
-
+        </div>
+        <script src="script/trip-on-tap.js"></script>
     </body>
 </html>
