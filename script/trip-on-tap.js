@@ -1,9 +1,34 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const element = document.getElementById("animatedText");
+    const text = element.innerText;
+    element.innerText = "";
+
+
+    let index = 0;
+
+    function typeLoop() {
+        if (index <= text.length) {
+            element.innerText = text.slice(0, index);
+            index++;
+            setTimeout(typeLoop, 200);  // typing speed
+        } else {
+            setTimeout(() => {
+                element.innerText = "";
+                index = 0;
+                typeLoop();
+            }, 500); // pause before clearing
+        }
+    }
+
+    typeLoop();
+});
+
 const modalHTML = `
     <div id="modal" class="modal">
     <div class="modal-content">
-        <h3>TripOnTap says</h3>
+        <h3>TripOnTap says...</h3>
         <p id="modalMessage"></p>
-        <button onclick="closeModal()">OK</button>
+        <button type="button" onclick="closeModal()">OK</button>
     </div>
     </div>
 `;
@@ -20,7 +45,61 @@ function showModal(message) {
 function closeModal() {
     document.getElementById("modal").style.display = "none";
 }
-const forms = [];
+const forms = JSON.parse(localStorage.getItem("tripForms")) || [];
+
+function saveForms() {
+    localStorage.setItem("tripForms", JSON.stringify(forms));
+}
+
+function renderForms() {
+    const container = document.querySelector('.js-your-trips-content');
+    if (!container) return;
+
+    if (forms.length === 0) {
+        container.innerHTML = "<p>No trips saved yet.</p>";
+        return;
+    }
+
+    let html = "";
+
+    forms.forEach((form, index) => {
+        html += `
+            <div class="trip-card">
+                <h3>Trip ${index + 1}</h3>
+
+                <p><strong>Form Type: &nbsp;</strong>${form.FormType}</p>
+                <p><strong>Name: &nbsp;</strong> ${form.Name}</p>
+                <p><strong>Email: &nbsp;</strong> ${form.Email}</p>
+                <p><strong>Destination: &nbsp;</strong> ${form.Destination}</p>
+                <p><strong>Travel Date: &nbsp;</strong> ${form["Travel Date"] || "-"}</p>
+                <p><strong>Number of Travelers: &nbsp;</strong> ${form["Number of Travellers"]}</p>
+                <p><strong>Age: &nbsp;</strong> ${form.Age}</p>
+                <p><strong>Phone: &nbsp;</strong> ${form.Phone}</p>
+                <p><strong>Address: &nbsp;</strong> ${form.Address}</p>
+                <p><strong>Message: &nbsp;</strong> ${form.Message}</p>
+                <p><strong>Saved On: &nbsp;</strong> ${form["Saved On"]}</p>
+                <button class="delete-form-btn" onclick="deleteTrip(${index})">
+                    Delete Trip
+                </button>
+            </div>
+        `;
+    });
+
+    container.innerHTML = html;
+}
+
+function deleteTrip(index) {
+    const confirmDelete = confirm("Are you sure you want to delete this trip?");
+    if (!confirmDelete) return;
+
+    forms.splice(index, 1);   // remove 1 item at position index
+    saveForms();              // update localStorage
+    renderForms();            // re-render UI
+
+    showModal("Trip deleted successfully.");
+}
+
+
 
 function isValidEmail(email) {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -30,6 +109,12 @@ function isValidEmail(email) {
 function isValidPhone(phone) {
     const phonePattern = /^[0-9]{10}$/;
     return phonePattern.test(phone);
+}
+
+function isValidDate(date) {
+    const today = new Date();
+    const inputDate = new Date(date);
+    return inputDate > today;
 }
 
 function checkFields(fields, i, j) {
@@ -42,19 +127,19 @@ function checkFields(fields, i, j) {
     });
 
     if (firstInvalidField) {
-        showModal("Please fill all fields");
+        showModal("Please fill all fields.");
         firstInvalidField.focus();
         return false;
     }
     
     if (!isValidEmail(fields[i].value)) {
-        showModal("Please enter a valid email address");
+        showModal("Please enter a valid email address.");
         fields[i].focus();
         return false;
     }
     
     if (!isValidPhone(fields[j].value)) {
-        showModal("Please enter a valid phone number (10 digits)");
+        showModal("Please enter a valid phone number (10 digits).");
         fields[j].focus();
         return false;
     }
@@ -76,22 +161,32 @@ function addForm() {
     ];
     
     if (!checkFields(fields, 1, 6)) return;
+
+    if (!isValidDate(fields[3].value)) {
+        showModal("Please enter a valid travel date.");
+        fields[3].focus();
+        return false;
+    }
     
     const form = {
-        name: fields[0].value,
-        email: fields[1].value,
-        destination: fields[2].value,
-        date: fields[3].value,
-        travellers: fields[4].value,
-        age: fields[5].value,
-        phone: fields[6].value,
-        address: fields[7].value,
-        comments: fields[8].value
+        "FormType" : "Plan Your Trip",
+        "Name": fields[0].value,
+        "Email": fields[1].value,
+        "Destination": fields[2].value,
+        "Travel Date": fields[3].value,
+        "Number of Travellers": fields[4].value,
+        "Age": fields[5].value,
+        "Phone": fields[6].value,
+        "Address": fields[7].value,
+        "Message": fields[8].value,
+        "Saved On": new Date().toLocaleString()
     };
     
     forms.push(form);
-    console.log(form);
+    saveForms();
+    renderForms();
     showModal("Form submitted successfully! Our team will contact you soon.");
+
     fields.forEach(field => field.value = "");
 }
 
@@ -135,28 +230,35 @@ function openDubaiModal() {
 function addPackageForm(formElement) {
     const fields = [
         formElement.querySelector('.js-name-pkg'),
-        formElement.querySelector('.js-age-pkg'),
         formElement.querySelector('.js-email-pkg'),
+        formElement.querySelector('.js-select-pkg'),  
+        formElement.querySelector('.js-travellers-pkg'),
+        formElement.querySelector('.js-age-pkg'),
         formElement.querySelector('.js-phone-pkg'),
         formElement.querySelector('.js-address-pkg'),
-        formElement.querySelector('.js-travellers-pkg'),
-        formElement.querySelector('.js-comments-pkg')
+        formElement.querySelector('.js-comments-pkg'),
     ];
 
-    if (!checkFields(fields, 2, 3)) return;
+    if (!checkFields(fields, 1, 5)) return;
 
     const form = {
-        name: fields[0].value,
-        age: fields[1].value,
-        email: fields[2].value,
-        phone: fields[3].value,
-        address: fields[4].value,
-        travellers: fields[5].value,
-        comments: fields[6].value
+        "FormType": "Package Booking",
+        "Name": fields[0].value,
+        "Email": fields[1].value,
+        "Destination": formElement.querySelector('.package_title').innerText,
+        "Travel Date": fields[2].value,
+        "Number of Travellers": fields[3].value,
+        "Age": fields[4].value,
+        "Phone": fields[5].value,
+        "Address": fields[6].value,
+        "Message": fields[7].value,
+        "Saved On": new Date().toLocaleString()
     };
     forms.push(form);
-    console.log(form);
+    saveForms();
+    renderForms();
     showModal("Package inquiry submitted successfully! Our team will contact you soon.");
+
     fields.forEach(field => field.value = "");
     formElement.style.display = 'none';
 }
@@ -167,3 +269,37 @@ document.querySelectorAll('.package_itinerary_modal').forEach(form => {
         addPackageForm(this);
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    renderForms();
+});
+
+const search = () => {
+    const searchbox = document
+        .getElementById("searchDestinations")
+        .value.toUpperCase();
+
+    const boxes = Array.from(
+        document.querySelectorAll(".destination_box")
+    );
+
+    // Filter matching boxes
+    const matched = boxes.filter(box => {
+        const title = box.querySelector("h3").textContent.toUpperCase();
+        const category = box.querySelector(".img_des").textContent.toUpperCase();
+
+        return (
+            title.includes(searchbox) ||
+            category.includes(searchbox)
+        );
+    });
+
+    // Show/Hide based on filter result
+    boxes.forEach(box => {
+        if (matched.includes(box)) {
+            box.style.display = "";
+        } else {
+            box.style.display = "none";
+        }
+    });
+};
